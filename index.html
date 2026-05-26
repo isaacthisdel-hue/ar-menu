@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AR Menu</title>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #0f0f0f, #1a1a1a);
+      color: white;
+      overflow: hidden;
+    }
+
+    /* TOP HEADER */
+    .header {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-top: 5px;
+    }
+
+    /* 3D VIEWER */
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* 🔥 MASSIVE AR BUTTON */
+    .ar-button {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 85%;
+      max-width: 420px;
+
+      padding: 22px 28px;
+      font-size: 24px;
+      font-weight: 900;
+
+      background: linear-gradient(135deg, #ff2d2d, #ff7a18);
+      color: white;
+
+      border: none;
+      border-radius: 18px;
+
+      box-shadow: 0 20px 40px rgba(255, 80, 0, 0.35);
+
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      z-index: 999;
+    }
+
+    .ar-button:active {
+      transform: translateX(-50%) scale(0.98);
+    }
+
+    /* SMALL HELP TEXT */
+    .hint {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="title">🍔 Burger Experience</div>
+    <div class="subtitle">Tap below to view in AR on your table</div>
+  </div>
+
+  <model-viewer
+    src="burger.glb"
+    ios-src="burger.usdz"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    camera-controls
+    auto-rotate
+    environment-image="neutral"
+    shadow-intensity="1">
+
+    <!-- BIG AR BUTTON -->
+    <button slot="ar-button" class="ar-button">
+      View in AR 🍔
+    </button>
+
+  </model-viewer>
+
+  <div class="hint">
+    Works on iPhone & Android • No app needed
+  </div>
+
+</body>
+</html>
